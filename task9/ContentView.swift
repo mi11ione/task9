@@ -13,13 +13,13 @@ struct ContentView: View {
 
     var body: some View {
         Color.red
-            .overlay { Color.yellow.frame(width: 250).clipShape(Circle()).blur(radius: 40) }
+            .overlay { Color.yellow.frame(width: 300).clipShape(Circle()).blur(radius: 40) }
             .overlay {
                 Color.black
                     .overlay {
-                        Circle().blendMode(.destinationOut).frame(width: 140)
+                        Circle().blendMode(.destinationOut).frame(width: 130)
                             .overlay {
-                                Circle().blendMode(.destinationOut).frame(width: 140).offset(offset)
+                                Circle().blendMode(.destinationOut).frame(width: 130).offset(offset)
                                     .overlay {
                                         Image(systemName: "cloud.sun.rain.fill")
                                             .symbolRenderingMode(.hierarchical)
