@@ -26,24 +26,10 @@ struct ContentView: View {
                     context.addFilter(.alphaThreshold(min: 0.5, color: .yellow))
                     context.addFilter(.blur(radius: 18))
 
-                    context.drawLayer { ctx in
-                        if let baseCircle = context.resolveSymbol(id: 0) {
-                            ctx.draw(baseCircle, in: CGRect(x: (size.width - 130) / 2, y: (size.height - 130) / 2, width: 130, height: 130))
-                        }
-
-                        if let dragCircle = context.resolveSymbol(id: 0) {
-                            let rect = CGRect(
-                                x: (size.width - 130) / 2 + offset.width,
-                                y: (size.height - 130) / 2 + offset.height,
-                                width: 130,
-                                height: 130
-                            )
-                            ctx.draw(dragCircle, in: rect)
-                        }
+                    context.drawLayer { swag in
+                        swag.fill(Circle().path(in: CGRect(x: (size.width - 130) / 2, y: (size.height - 130) / 2, width: 130, height: 130)), with: .color(.black))
+                        swag.fill(Circle().path(in: CGRect(x: (size.width - 130) / 2 + offset.width, y: (size.height - 130) / 2 + offset.height, width: 130, height: 130)), with: .color(.black))
                     }
-                } symbols: {
-                    Circle()
-                        .tag(0)
                 }
 
                 Circle()
