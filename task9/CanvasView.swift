@@ -14,15 +14,10 @@ struct CanvasView: View {
         Canvas { context, size in
             context.addFilter(.alphaThreshold(min: 0.5, color: .yellow))
             context.addFilter(.blur(radius: 32))
-
-            context.drawLayer { layer in
-                drawSymbols(in: layer, size: size)
-            }
+            context.drawLayer { layer in drawSymbols(in: layer, size: size) }
         } symbols: {
-            Ball()
-                .tag(1)
-            Ball(offset: offset)
-                .tag(2)
+            Circle().fill(.white).frame(width: 150).tag(1)
+            Circle().fill(.white).frame(width: 150).offset(offset).tag(2)
         }
     }
 
@@ -32,16 +27,5 @@ struct CanvasView: View {
                 layer.draw(resolved, at: CGPoint(x: size.width / 2, y: size.height / 2))
             }
         }
-    }
-}
-
-private struct Ball: View {
-    var offset: CGSize = .zero
-
-    var body: some View {
-        Circle()
-            .fill(.white)
-            .frame(width: 150)
-            .offset(offset)
     }
 }
