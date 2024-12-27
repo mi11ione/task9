@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var offset: CGSize = .zero
+
     var body: some View {
         Rectangle().fill(.red)
             .overlay { Circle().fill(.yellow).frame(width: 200).blur(radius: 10) }
